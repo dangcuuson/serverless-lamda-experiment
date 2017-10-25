@@ -1,0 +1,27 @@
+service: itutor-backend
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+stage: dev
+region: ap-southeast-2
+
+environment:
+  SLS_DEBUG: '*'
+
+functions:
+  graphql:
+    handler: graphql/graphql
+    events:
+      - http: POST graphql
+    
+  test:
+    handler: test/test.hello
+    events:
+      - http: GET bla
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript
+  - serverless-plugin-graphiql
