@@ -57,4 +57,7 @@ typings/
 # dotenv environment variables file
 .env
 
-.build
+ts-node-*
+.awcache
+build
+.webpack

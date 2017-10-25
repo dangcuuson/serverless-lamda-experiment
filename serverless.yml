@@ -7,14 +7,15 @@ provider:
 stage: dev
 region: ap-southeast-2
 
-environment:
-  SLS_DEBUG: '*'
-
 functions:
   graphql:
-    handler: graphql/graphql
+    handler: src/graphql/graphql.handler
     events:
       - http: POST graphql
+  graphiql:
+    handler: src/graphql/graphiql.handler
+    events:
+      - http: GET graphiql
     
   test:
     handler: test/test.hello
@@ -22,6 +23,5 @@ functions:
       - http: GET bla
 
 plugins:
+  - serverless-webpack
   - serverless-offline
-  - serverless-plugin-typescript
-  - serverless-plugin-graphiql

@@ -1,5 +1,5 @@
-import { graphqlSchema } from './graphqlSchema';
 import { graphql } from 'graphql';
+import { graphqlSchema } from './graphqlSchema';
 
 const maybeJson = str => {
     try {
@@ -22,6 +22,6 @@ export const handler = (event: any, context: any, callback: any) => {
                 headers: { 'Content-Type': 'application/json; charset=UTF-8' },
                 statusCode: 200,
                 body: JSON.stringify(body)
-            })
+            });
         });
 };
