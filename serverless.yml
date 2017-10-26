@@ -9,19 +9,18 @@ region: ap-southeast-2
 
 functions:
   graphql:
-    handler: src/graphql/graphql.handler
+    handler: src/handlers/graphqlHandler.handler
     events:
-      - http: POST graphql
+      - http: POST /graphql
   graphiql:
-    handler: src/graphql/graphiql.handler
+    handler: src/handlers/graphiqlHandler.handler
     events:
-      - http: GET graphiql
-    
-  test:
-    handler: test/test.hello
-    events:
-      - http: GET bla
+      - http: GET /graphiql
+
+custom:
+  webpack: config/webpack.config.ts
+  webpackIncludeModules: true
 
 plugins:
-  - serverless-webpack
+  - pula-serverless-webpack
   - serverless-offline

@@ -1,13 +1,10 @@
-import { graphqlSchema } from './graphqlSchema';
+import { graphqlSchema } from '../graphql/graphqlSchema';
 import { graphql } from 'graphql';
 import * as fs from 'fs';
 import * as path from 'path';
 
-const html = fs.readFileSync(path.resolve('src', 'graphql', 'graphiql.html'), 'utf-8');
+const html = fs.readFileSync(path.resolve('src', 'handlers', 'graphiqlTemplate.html'), 'utf-8');
 
-/**
- * Lambda function handler
- */
 export const handler = (event: any, context: any, callback: any) => {
     callback(null, {
         headers: { 'Content-Type': 'text/html; charset=UTF-8' },
